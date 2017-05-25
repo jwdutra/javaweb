@@ -28,6 +28,10 @@
 		location.href="usuario.do?acao=novo";
 	}
 
+	function sair() {
+		location.href="autenticador.do";
+	}
+
 </script>
 
 </head>
@@ -36,9 +40,16 @@
 	<%
 		//captuando a lista do request
 		List<Usuario> lista = (List<Usuario>) request.getAttribute("lista");
+		Usuario usuAutenticado = (Usuario) session.getAttribute("usuAutenticado");
 	%>
 
-	<a href="#" onClick="novo()">Incluír novo usuário</a><br><br>
+	<p>
+		Seja bem vindo <b><%= usuAutenticado.getNome() + " id:"+ usuAutenticado.getId()%></b>
+	</p>
+
+	<a href="#" onClick="novo()">Incluír novo usuário</a>  -  
+
+	<a href="#" onClick="sair()">Sair</a><br><br>
 	
 	<table border="1">
 		<tr bgcolor="#eaeaea">
